@@ -32,6 +32,7 @@ FlowRouter.route('/submit', {
     await import('../../ui/pages/post-submit.js');
     BlazeLayout.render('layout', { mainContent: 'postSubmit' });
   },
+  requireLogin: true,
 });
 
 FlowRouter.notFound = {

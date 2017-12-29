@@ -13,10 +13,8 @@ import './post-page.html';
 Template.postPage.onCreated(function () {
   const templateInstance = this;
   templateInstance.autorun(() => {
-    if (FlowRouter.subsReady('posts')) {
-      if (!Posts.findOne(FlowRouter.getParam('_id'))) {
-        Meteor.defer(() => BlazeLayout.render('notFound'));
-      }
+    if (FlowRouter.subsReady('posts') && !Posts.findOne(FlowRouter.getParam('_id'))) {
+      Meteor.defer(() => BlazeLayout.render('notFound'));
     }
   });
 });

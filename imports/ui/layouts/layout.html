@@ -1,4 +1,20 @@
 <template name="layout">
+  {{#if requireLogin}}
+    {{#unless loggingIn}}
+      {{#if currentUser}}
+        {{> layoutContent}}
+      {{else}}
+        {{> accessDenied}}
+      {{/if}}
+    {{else}}
+      {{> loading}}
+    {{/unless}}
+  {{else}}
+    {{> layoutContent}}
+  {{/if}}
+</template>
+
+<template name="layoutContent">
   {{#if subsReady 'posts'}}
     <div class="container">
       {{> header}}
