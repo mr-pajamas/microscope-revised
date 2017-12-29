@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
@@ -14,7 +15,7 @@ Template.postPage.onCreated(function () {
   templateInstance.autorun(() => {
     if (FlowRouter.subsReady('posts')) {
       if (!Posts.findOne(FlowRouter.getParam('_id'))) {
-        BlazeLayout.render('notFound');
+        Meteor.defer(() => BlazeLayout.render('notFound'));
       }
     }
   });
