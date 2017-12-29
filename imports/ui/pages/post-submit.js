@@ -11,11 +11,16 @@ Template.postSubmit.events({
     event.preventDefault();
 
     const post = {
-      title: $(event.target).find('[name=title]').val(),
-      url: $(event.target).find('[name=url]').val(),
+      title: $(event.target).find('[name=title]').val().trim(),
+      url: $(event.target).find('[name=url]').val().trim(),
     };
 
-    post._id = Posts.insert(post);
-    FlowRouter.go('postPage', post);
+    Posts.insert(post, (error, _id) => {
+      if (error) {
+        console.log(error);
+      } else {
+        FlowRouter.go('postPage', { _id });
+      }
+    });
   },
 });

@@ -19,4 +19,10 @@ Posts.attachSchema(new SimpleSchema({
   },
 }));
 
+Posts.allow({
+  insert(userId) {
+    return !!userId;
+  },
+});
+
 export { Posts };
