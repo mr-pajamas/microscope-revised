@@ -26,5 +26,8 @@ aldeed:simple-schema
 aldeed:collection2
 mdg:validated-method
 mdg:validation-error
+
 huttonr:bootstrap3
 sacha:spin
+ian:accounts-ui-bootstrap-3
+accounts-password
