@@ -25,3 +25,10 @@ FlowRouter.route('/posts/:_id', {
     BlazeLayout.render('layout', { mainContent: 'postPage' });
   },
 });
+
+FlowRouter.notFound = {
+  async action() {
+    await import('../../ui/pages/not-found.js');
+    BlazeLayout.render('notFound');
+  },
+};
