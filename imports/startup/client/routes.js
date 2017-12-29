@@ -17,3 +17,11 @@ FlowRouter.route('/', {
     BlazeLayout.render('layout', { mainContent: 'postList' });
   },
 });
+
+FlowRouter.route('/posts/:_id', {
+  name: 'postPage',
+  async action() {
+    await import('../../ui/pages/post-page.js');
+    BlazeLayout.render('layout', { mainContent: 'postPage' });
+  },
+});
