@@ -7,5 +7,5 @@ Template.postItem.helpers({
     const a = document.createElement('a');
     ({ url: a.href } = this);
     return a.hostname;
-  }
+  },
 });

@@ -6,20 +6,20 @@ import './post-list.html';
 const postData = [
   {
     title: 'Introducing Telescope',
-    url: 'http://sachagreif.com/introducing-telescope/'
+    url: 'http://sachagreif.com/introducing-telescope/',
   },
   {
     title: 'Meteor',
-    url: 'http://meteor.com'
+    url: 'http://meteor.com',
   },
   {
     title: 'The Meteor Book',
-    url: 'http://themeteorbook.com'
+    url: 'http://themeteorbook.com',
   },
 ];
 
 Template.postList.helpers({
   posts() {
     return postData;
-  }
+  },
 });
