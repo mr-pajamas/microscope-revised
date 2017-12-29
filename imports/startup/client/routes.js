@@ -26,6 +26,14 @@ FlowRouter.route('/posts/:_id', {
   },
 });
 
+FlowRouter.route('/submit', {
+  name: 'postSubmit',
+  async action() {
+    await import('../../ui/pages/post-submit.js');
+    BlazeLayout.render('layout', { mainContent: 'postSubmit' });
+  },
+});
+
 FlowRouter.notFound = {
   async action() {
     await import('../../ui/pages/not-found.js');
