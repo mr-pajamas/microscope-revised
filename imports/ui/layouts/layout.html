@@ -1,0 +1,12 @@
+<template name="layout">
+  <div class="container">
+    <header class="navbar navbar-default">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{pathFor 'postList'}}">Microscope</a>
+      </div>
+    </header>
+    <div id="main">
+      {{> Template.dynamic template=mainContent}}
+    </div>
+  </div>
+</template>
