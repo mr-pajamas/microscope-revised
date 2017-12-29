@@ -6,8 +6,6 @@ import '../components/post/post-item.js';
 import './post-list.html';
 
 Template.postList.onCreated(function () {
-  const templateInstance = this;
-  templateInstance.subscribe('post.posts');
 });
 
 Template.postList.helpers({
