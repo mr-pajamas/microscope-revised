@@ -8,6 +8,10 @@ Posts.attachSchema(new SimpleSchema({
   title: {
     type: String,
   },
+  author: {
+    type: String,
+    optional: true,
+  },
   url: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,

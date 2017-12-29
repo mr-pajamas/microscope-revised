@@ -1,25 +1,17 @@
 import { Template } from 'meteor/templating';
 
+import { Posts } from '../../../api/post/collections.js';
+
 import './post-item.js';
 import './post-list.html';
 
-const postData = [
-  {
-    title: 'Introducing Telescope',
-    url: 'http://sachagreif.com/introducing-telescope/',
-  },
-  {
-    title: 'Meteor',
-    url: 'http://meteor.com',
-  },
-  {
-    title: 'The Meteor Book',
-    url: 'http://themeteorbook.com',
-  },
-];
+Template.postList.onCreated(function () {
+  const templateInstance = this;
+  templateInstance.subscribe('posts');
+});
 
 Template.postList.helpers({
   posts() {
-    return postData;
+    return Posts.find();
   },
 });
