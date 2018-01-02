@@ -11,14 +11,17 @@ Posts.attachSchema(new SimpleSchema({
   url: {
     type: String,
     regEx: SimpleSchema.RegEx.Url,
-    optional: true,
+    index: true,
+    unique: true,
   },
   userId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,
+    optional: true,
   },
   author: {
     type: String,
+    optional: true,
   },
   submitted: {
     type: Date,

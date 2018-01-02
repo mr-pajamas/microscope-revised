@@ -15,10 +15,12 @@ Template.postSubmit.events({
       url: $(event.target).find('[name=url]').val().trim(),
     };
 
-    insertPost.call(post, (error, { _id }) => {
+    insertPost.call(post, (error, { postExists = false, _id }) => {
       if (error) {
         alert(error.reason);
       } else {
+        if (postExists) { alert('This link has already been posted'); }
+
         FlowRouter.go('postPage', { _id });
       }
     });

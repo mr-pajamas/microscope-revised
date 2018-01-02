@@ -21,6 +21,14 @@ export const insertPost = new ValidatedMethod({
     throwStubExceptions: true,
   },
   run({ title, url }) {
+    const postWithSameLink = Posts.findOne({ url });
+    if (postWithSameLink) {
+      return {
+        postExists: true,
+        _id: postWithSameLink._id,
+      };
+    }
+
     const user = Meteor.user();
     const postId = Posts.insert({
       title,
