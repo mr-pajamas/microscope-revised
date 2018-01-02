@@ -16,12 +16,25 @@
 
 <template name="layoutContent">
   {{#if subsReady 'posts'}}
-    <div class="container">
-      {{> header}}
-      <div id="main">
-        {{> Template.dynamic template=mainContent}}
+    {{#if hasData}}
+      {{#with data}}
+        <div class="container">
+          {{> header}}
+          <div id="main">
+            {{> Template.dynamic template=../mainContent}}
+          </div>
+        </div>
+      {{else}}
+        {{> notFound}}
+      {{/with}}
+    {{else}}
+      <div class="container">
+        {{> header}}
+        <div id="main">
+          {{> Template.dynamic template=mainContent}}
+        </div>
       </div>
-    </div>
+    {{/if}}
   {{else}}
     {{> loading}}
   {{/if}}

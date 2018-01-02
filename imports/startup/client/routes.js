@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
+import { Posts } from '../../api/post/collections.js';
+
 import '../../ui/layouts/layout.js';
 
 BlazeLayout.setRoot('body');
@@ -23,6 +25,9 @@ FlowRouter.route('/posts/:_id', {
   async action() {
     await import('../../ui/pages/post-page.js');
     BlazeLayout.render('layout', { mainContent: 'postPage' });
+  },
+  data() {
+    return Posts.findOne(FlowRouter.getParam('_id'));
   },
 });
 

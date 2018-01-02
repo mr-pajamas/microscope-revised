@@ -14,3 +14,16 @@ Template.layout.helpers({
     return FlowRouter.current().route.options.requireLogin;
   },
 });
+
+Template.layoutContent.helpers({
+  hasData() {
+    FlowRouter.watchPathChange();
+    return !!FlowRouter.current().route.options.data;
+  },
+  data() {
+    FlowRouter.watchPathChange();
+    const dataFunc = FlowRouter.current().route.options.data;
+    if (dataFunc) return dataFunc();
+    return undefined;
+  },
+});

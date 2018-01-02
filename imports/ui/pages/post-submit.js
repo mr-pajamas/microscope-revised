@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-import { Posts } from '../../api/post/collections.js';
+import { insertPost } from '../../api/post/methods.js';
 
 import './post-submit.html';
 
@@ -15,9 +15,9 @@ Template.postSubmit.events({
       url: $(event.target).find('[name=url]').val().trim(),
     };
 
-    Posts.insert(post, (error, _id) => {
+    insertPost.call(post, (error, { _id }) => {
       if (error) {
-        console.log(error);
+        alert(error.reason);
       } else {
         FlowRouter.go('postPage', { _id });
       }
