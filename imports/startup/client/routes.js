@@ -31,6 +31,17 @@ FlowRouter.route('/posts/:_id', {
   },
 });
 
+FlowRouter.route('/posts/:_id/edit', {
+  name: 'postEdit',
+  async action() {
+    await import('../../ui/pages/post-edit.js');
+    BlazeLayout.render('layout', { mainContent: 'postEdit' });
+  },
+  data() {
+    return Posts.findOne(FlowRouter.getParam('_id'));
+  },
+});
+
 FlowRouter.route('/submit', {
   name: 'postSubmit',
   async action() {

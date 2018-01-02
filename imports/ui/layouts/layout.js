@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import '../components/loading.html';
-
+import '../pages/not-found.js';
 import '../pages/access-denied.js';
 
 import './header.html';
