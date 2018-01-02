@@ -10,6 +10,6 @@ Template.postList.onCreated(function () {
 
 Template.postList.helpers({
   posts() {
-    return Posts.find();
+    return Posts.find({}, { sort: { submitted: -1 } });
   },
 });
