@@ -2,6 +2,8 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
+import { ownsDocument } from '../../modules/permissions.js';
+
 const Posts = new Mongo.Collection('posts');
 
 Posts.attachSchema(new SimpleSchema({
@@ -44,5 +46,9 @@ Posts.allow({
   },
 });
 */
+Posts.allow({
+  update: ownsDocument,
+  remove: ownsDocument,
+});
 
 export { Posts };
