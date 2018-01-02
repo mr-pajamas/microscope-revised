@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { _ } from 'meteor/underscore';
 
 import { ownsDocument } from '../../modules/permissions.js';
 
@@ -49,6 +50,12 @@ Posts.allow({
 Posts.allow({
   update: ownsDocument,
   remove: ownsDocument,
+});
+
+Posts.deny({
+  update(userId, post, fieldNames) {
+    return (_.without(fieldNames, 'url', 'title').length > 0);
+  },
 });
 
 export { Posts };

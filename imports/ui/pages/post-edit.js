@@ -30,7 +30,7 @@ Template.postEdit.events({
 
     if (confirm('Delete this post?')) {
       Posts.remove(this._id);
-      FlowRouter.go('postsList');
+      FlowRouter.go('postList');
     }
   },
 });
