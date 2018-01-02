@@ -20,6 +20,7 @@
       {{#with data}}
         <div class="container">
           {{> header}}
+          {{> errors}}
           <div id="main">
             {{> Template.dynamic template=../mainContent}}
           </div>
@@ -30,6 +31,7 @@
     {{else}}
       <div class="container">
         {{> header}}
+        {{> errors}}
         <div id="main">
           {{> Template.dynamic template=mainContent}}
         </div>

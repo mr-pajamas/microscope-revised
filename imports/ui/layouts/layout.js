@@ -6,6 +6,7 @@ import '../pages/not-found.js';
 import '../pages/access-denied.js';
 
 import './header.html';
+import './errors.js';
 import './layout.html';
 
 Template.layout.helpers({
