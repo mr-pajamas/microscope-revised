@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { _ } from 'meteor/underscore';
@@ -58,4 +57,11 @@ Posts.deny({
   },
 });
 
-export { Posts };
+function validatePost(post) {
+  const errors = {};
+  if (!post.title) errors.title = 'Please fill in a headline';
+  if (!post.url) errors.url = 'Please fill in a URL';
+  return errors;
+}
+
+export { Posts, validatePost };

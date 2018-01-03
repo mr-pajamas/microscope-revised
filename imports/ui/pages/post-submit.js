@@ -4,17 +4,20 @@ import { $ } from 'meteor/jquery';
 import { _ } from 'meteor/underscore';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+import { validatePost } from '../../api/post/collections.js';
 import { insertPost } from '../../api/post/methods.js';
 import { throwError } from '../../modules/client/errors.js';
 
 import './post-submit.html';
 
+/*
 function validatePost(post) {
   const errors = {};
   if (!post.title) errors.title = 'Please fill in a headline';
   if (!post.url) errors.url = 'Please fill in a URL';
   return errors;
 }
+*/
 
 Template.postSubmit.onCreated(function () {
   const templateInstance = this;
