@@ -3,6 +3,7 @@ import { $ } from 'meteor/jquery';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Posts } from '../../api/post/collections.js';
+import { throwError } from '../../modules/client/errors.js';
 
 import './post-edit.html';
 
@@ -19,7 +20,7 @@ Template.postEdit.events({
 
     Posts.update(currentPostId, { $set: postProperties }, (error) => {
       if (error) {
-        alert(error.reason);
+        throwError(error.reason);
       } else {
         FlowRouter.go('postPage', { _id: currentPostId });
       }

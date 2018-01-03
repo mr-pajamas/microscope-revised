@@ -3,6 +3,7 @@ import { $ } from 'meteor/jquery';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { insertPost } from '../../api/post/methods.js';
+import { throwError } from '../../modules/client/errors.js';
 
 import './post-submit.html';
 
@@ -17,9 +18,9 @@ Template.postSubmit.events({
 
     insertPost.call(post, (error, { postExists = false, _id }) => {
       if (error) {
-        alert(error.reason);
+        throwError(error.reason);
       } else {
-        if (postExists) { alert('This link has already been posted'); }
+        if (postExists) { throwError('This link has already been posted'); }
 
         FlowRouter.go('postPage', { _id });
       }
