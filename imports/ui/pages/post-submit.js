@@ -16,7 +16,7 @@ Template.postSubmit.events({
       url: $(event.target).find('[name=url]').val().trim(),
     };
 
-    insertPost.call(post, (error, { postExists = false, _id }) => {
+    insertPost.call(post, (error, { postExists = false, _id } = {}) => {
       if (error) {
         throwError(error.reason);
       } else {
